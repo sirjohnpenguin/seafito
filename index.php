@@ -4,7 +4,6 @@
 # php-curl required
 session_start();
 include("functions.php");	
-$date_format = '%d/%m/%Y %H:%M:%S';
 
 $header_html=
 '
