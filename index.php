@@ -138,8 +138,8 @@ if (isset($_GET['download']) AND isset($_SESSION['token'])){
 	echo $header_html;
 	$library="/api2/repos/" .  $_GET['download'] . rawurlencode($_GET['file']);
 	$repo_list = seafileApi('GET',$library,'',$_SESSION['token'],$_SESSION['hostname']);
-	var_dump($repo_list);
-	//header("Location:$repo_list");
+	//var_dump($repo_list);
+	header("Location:$repo_list");
 	$logout_html="<hr><address>". $_SESSION['username']." logged on ".$_SESSION['hostname']." <a href='?logout=1'>logout</a></address>";
 
 	echo $logout_html;
