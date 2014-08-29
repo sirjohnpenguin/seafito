@@ -133,7 +133,7 @@ if(isset($_GET['dir']) AND isset($_SESSION['token'])){
 	} 
 
 	$table_results.= '  </table>';
-	$logout_html="<hr><address>". $_SESSION['username']." logged on ".$_SESSION['hostname']." <a href='?logout=1'>logout</a></address>";
+	$logout_html="<hr style=\"width:98%\"><address>". $_SESSION['username']." logged on ".$_SESSION['hostname']." <a href='?logout=1'>logout</a></address>";
 	$header_html = str_replace("##TITLE##", 'Seafito - Index of /' .$repo_name['name'] . $_GET['dir'], $header_html);
 	echo $header_html;
 	echo '<h1>Index of /' .$repo_name['name'] . $_GET['dir'] . '</h1>';	
@@ -172,7 +172,7 @@ if (isset($_SESSION['token'])){
 
 
 	$table_results.=  '  </table>';
-	$logout_html="<hr><address>". $_SESSION['username']." logged on ".$_SESSION['hostname']." <a href='?logout=1'>logout</a></address>";
+	$logout_html="<hr style=\"width:98%\"><address>". $_SESSION['username']." logged on ".$_SESSION['hostname']." <a href='?logout=1'>logout</a></address>";
 	$header_html = str_replace("##TITLE##", "Seafito - Index of /", $header_html);
 	echo $header_html;
 	echo '<h1>Index of /</h1>';	
