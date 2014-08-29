@@ -99,37 +99,18 @@ function replace_between($str, $needle_start, $needle_end, $replacement)
     return substr_replace($str,$replacement,  $start, $end - $start);
 }
 
-function time_elapsed_string($datetime, $full = false)
-{
-    // last update in seconds,minutes, hours,days,etc. ej:
-	// echo time_elapsed_string('2013-05-01 00:22:35');
-	// echo time_elapsed_string('@1367367755'); # timestamp input
-	// echo time_elapsed_string('2013-05-01 00:22:35', true);
-	$now = new DateTime;
-    $ago = new DateTime($datetime);
-    $diff = $now->diff($ago);
-
-    $diff->w = floor($diff->d / 7);
-    $diff->d -= $diff->w * 7;
-
-    $string = array(
-        'y' => 'year',
-        'm' => 'month',
-        'w' => 'week',
-        'd' => 'day',
-        'h' => 'hour',
-        'i' => 'minute',
-        's' => 'second',
-    );
-    foreach ($string as $k => &$v) {
-        if ($diff->$k) {
-            $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
-        } else {
-            unset($string[$k]);
-        }
-    }
-
-    if (!$full) $string = array_slice($string, 0, 1);
-    return $string ? implode(', ', $string) . ' ago' : 'just now';
-}
+function time_elapsed_string($timestamp, $precision = 2) { 
+  $time = time() - $timestamp; 
+  $a = array('decade' => 315576000, 'year' => 31557600, 'month' => 2629800, 'week' => 604800, 'day' => 86400, 'hour' => 3600, 'min' => 60, 'sec' => 1); 
+  $i = 0; 
+    foreach($a as $k => $v) { 
+      $$k = floor($time/$v); 
+      if ($$k) $i++; 
+      $time = $i >= $precision ? 0 : $time - $$k * $v; 
+      $s = $$k > 1 ? 's' : ''; 
+      $$k = $$k ? $$k.' '.$k.$s.' ' : ''; 
+      @$result .= $$k; 
+    } 
+  return $result ? $result.'ago' : '1 sec to go'; 
+} 
 ?>
