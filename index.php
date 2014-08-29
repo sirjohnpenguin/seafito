@@ -11,6 +11,10 @@ $header_html=
 <HEAD>
 <TITLE>Seafile</TITLE>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<link rel="icon" type="image/x-icon" href="img/favicon.png" />
+<!--[if IE]>
+<link rel="shortcut icon" href="img/favicon.png"/>
+<![endif]-->
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;width:100%}
 .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
