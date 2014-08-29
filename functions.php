@@ -3,7 +3,8 @@
 # Seafile nasty frontend
 # php-curl required
 
-function seafileLogin($username,$password,$hostname)
+# Login() function from https://github.com/combro2k/seafile-php
+function seafileLogin($username,$password,$hostname) 
     {
         $fields = array(
             'username' => urlencode($username),
@@ -30,6 +31,7 @@ function seafileLogin($username,$password,$hostname)
 		curl_close($ch);
 		return $result;
     }
+# api() function from https://github.com/combro2k/seafile-php
 
 function seafileApi($method = 'GET', $path = '', $data = array(), $token, $hostname)
     {
@@ -67,6 +69,7 @@ function seafileApi($method = 'GET', $path = '', $data = array(), $token, $hostn
         return json_decode($result, true);
     }
 
+# function from http://php.net/manual/es/function.strrpos.php#36548	
 function cut_last_occurence($string,$cut_off) 
 	{
 		//   example: cut off the last occurence of "limit"
@@ -75,30 +78,18 @@ function cut_last_occurence($string,$cut_off)
 		#    echo cut_last_occurence($str,"limit");
 		return strrev(substr(strstr(strrev($string), strrev($cut_off)),strlen($cut_off)));
 	}
-    
+
+# function from http://stackoverflow.com/a/2510468    
 function formatBytes($size, $precision = 2)
 {
 	$base = log($size) / log(1024);
     $suffixes = array(' Bytes', ' KB', ' MB', ' GB', ' TB');   
 	$result=round(pow(1024, $base - floor($base)), $precision) . $suffixes[floor($base)];
-	$result=($result>0) ? $result : "0 Bytes";
+	$result=($result>0) ? $result : "0 Bytes"; #NAN issue
 	return $result;
 }
 
-function replace_between($str, $needle_start, $needle_end, $replacement) 
-{
-    //replace between tags ej:
-	#$string = "<tag>i dont know what is here</tag>";
-	#echo replace_between($string, '<tag>', '</tag>', 'replacement');
-	$pos = strpos($str, $needle_start);
-    $start = $pos === false ? 0 : $pos + strlen($needle_start);
-
-    $pos = strpos($str, $needle_end, $start);
-    $end = $start === false ? strlen($str) : $pos;
- 
-    return substr_replace($str,$replacement,  $start, $end - $start);
-}
-
+# funtion from http://php.net/manual/es/function.time.php#109516
 function time_elapsed_string($timestamp, $precision = 2) { 
   $time = time() - $timestamp; 
   $a = array('decade' => 315576000, 'year' => 31557600, 'month' => 2629800, 'week' => 604800, 'day' => 86400, 'hour' => 3600, 'min' => 60, 'sec' => 1); 
