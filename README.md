@@ -1,9 +1,9 @@
 Seafito
 =======
-PHP Frontend para Seafile que utiliza la Web API. 
-Horrendamente escrito y posiblemente inseguro...bah, que se yo.
+Seafito (sifito) es un Frontend para Seafile que utiliza la Web API. 
+Horrendamente escrito en PHP y posiblemente inseguro...bah, que se yo.
 
-Solo se puede leer y descargar, no esta implementada la subida
+Solo esta implementada la descarga de archivos.
 por ahora...
 
 Requerimientos
