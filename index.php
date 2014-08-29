@@ -58,7 +58,6 @@ if (ini_get("session.use_cookies")) {
     );
 }
 session_destroy();
-echo "chau";
 header("Location:?");
 }
 
@@ -99,13 +98,13 @@ if(isset($_GET['dir']) AND isset($_SESSION['token'])){
 	$table_results.= '<td><b>Name</b></td>';
 	$table_results.= '<td><b>Size</b></td>';
 	$table_results.= '<td><b>Last modified</b></td></tr>';
-	$table_results.= '<tr><td colspan="4"><hr></td></tr><tr>';
+	$table_results.= '<tr><td colspan="4"><hr></td></tr>';
 
 	if ($_GET['dir']!=""){
-	$table_results.= '<td width="24px"><img src="img/folder.png"></td>';
+	$table_results.= '<tr><td width="24px"><img src="img/folder.png"></td>';
 	$table_results.= '<td class="tg-k6pi"><a href="?dir=' .$dirc. '&repo=' . $_GET['repo'] . '">..</a></td></tr>';
 	}else{
-	$table_results.= '<td width="24px"><img src="img/library.png"></td>';
+	$table_results.= '<tr><td width="24px"><img src="img/library.png"></td>';
 	$table_results.= '<td class="tg-k6pi"><a href="?">..</a></td></tr>';
 	}
 
@@ -118,7 +117,7 @@ if(isset($_GET['dir']) AND isset($_SESSION['token'])){
 			$table_results.= '<td width="24px"><img src="img/file.png"></td>';
 			$table_results.= '<td class="tg-k6pi"><a href="?download=' .  $_GET['repo']  . '/file/?p=/' .$_GET['dir'] . '/&file=' . $array_value['name'] . '">' . $array_value['name'] . '</a> </td>';
 			$table_results.= '<td class="tg-k6pi">' . formatBytes($array_value['size']) . '</a> </td>';
-			$table_results.= '<td class="tg-k6pi">' . time_elapsed_string('@'.$array_value['mtime']) . '</td></tr>';
+			$table_results.= '<td class="tg-k6pi">' . time_elapsed_string($array_value['mtime']) . '</td></tr>';
 
 			
 		}
@@ -135,15 +134,10 @@ if(isset($_GET['dir']) AND isset($_SESSION['token'])){
 }
 
 if (isset($_GET['download']) AND isset($_SESSION['token'])){
-	echo $header_html;
 	$library="/api2/repos/" .  $_GET['download'] . rawurlencode($_GET['file']);
 	$repo_list = seafileApi('GET',$library,'',$_SESSION['token'],$_SESSION['hostname']);
-	//var_dump($repo_list);
 	header("Location:$repo_list");
-	$logout_html="<hr><address>". $_SESSION['username']." logged on ".$_SESSION['hostname']." <a href='?logout=1'>logout</a></address>";
-
-	echo $logout_html;
-	die($footer_html);
+	die();
 }
 
 if (isset($_SESSION['token'])){
@@ -151,13 +145,20 @@ if (isset($_SESSION['token'])){
 	$table_results= '
 	<table class="tg">
   ';
+	$table_results.= '<tr>';
+	$table_results.= '<td></td>';
+	$table_results.= '<td><b>Name</b></td>';
+	$table_results.= '<td><b>Desc</b></td>';
+	$table_results.= '<td><b>Last modified</b></td></tr>';
+	$table_results.= '<tr><td colspan="4"><hr></td></tr>';
+
 	$repo_list = seafileApi('GET','/api2/repos/','',$_SESSION['token'],$_SESSION['hostname']);
 	foreach ($repo_list as $array_value) {
 	$table_results.= '<tr>';
 	$table_results.=  '<td width="24px"><img src="img/library.png"></td>';
     $table_results.=  '<td class="tg-k6pi"><a href="?repo=' . $array_value['id'] . '&repo_name='.$array_value['name'].'&dir=">' . $array_value['name'] . '</a></td>';
     $table_results.=  '<td class="tg-k6pi">' . $array_value['desc'] . '</td>';
-	$table_results.= '<td class="tg-k6pi">' . time_elapsed_string('@'.$array_value['mtime']) . '</td>';
+	$table_results.= '<td class="tg-k6pi">' . time_elapsed_string($array_value['mtime']) . '</td>';
 	$table_results.=  '</tr>';	
 	} 
 	$table_results.=  '  </table>';
