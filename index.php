@@ -49,14 +49,14 @@ Hostname<br>
 
 // php.net site logout style.
 if (isset($_GET['logout'])){
-$_SESSION = array();
-if (ini_get("session.use_cookies")) {
-    $params = session_get_cookie_params();
-    setcookie(session_name(), '', time() - 42000,
-        $params["path"], $params["domain"],
-        $params["secure"], $params["httponly"]
-    );
-}
+	$_SESSION = array();
+	if (ini_get("session.use_cookies")) {
+		$params = session_get_cookie_params();
+		setcookie(session_name(), '', time() - 42000,
+			$params["path"], $params["domain"],
+			$params["secure"], $params["httponly"]
+		);
+	}
 session_destroy();
 header("Location:?");
 }
@@ -101,11 +101,11 @@ if(isset($_GET['dir']) AND isset($_SESSION['token'])){
 	$table_results.= '<tr><td colspan="4"><hr></td></tr>';
 
 	if ($_GET['dir']!=""){
-	$table_results.= '<tr><td width="24px"><img src="img/folder.png"></td>';
-	$table_results.= '<td class="tg-k6pi"><a href="?dir=' .$dirc. '&repo=' . $_GET['repo'] . '">..</a></td></tr>';
-	}else{
-	$table_results.= '<tr><td width="24px"><img src="img/library.png"></td>';
-	$table_results.= '<td class="tg-k6pi"><a href="?">..</a></td></tr>';
+		$table_results.= '<tr><td width="24px"><img src="img/folder.png"></td>';
+		$table_results.= '<td class="tg-k6pi"><a href="?dir=' .$dirc. '&repo=' . $_GET['repo'] . '">..</a></td></tr>';
+		}else{
+		$table_results.= '<tr><td width="24px"><img src="img/library.png"></td>';
+		$table_results.= '<td class="tg-k6pi"><a href="?">..</a></td></tr>';
 	}
 
 	foreach ($repo_list as $array_value) {
@@ -154,12 +154,12 @@ if (isset($_SESSION['token'])){
 
 	$repo_list = seafileApi('GET','/api2/repos/','',$_SESSION['token'],$_SESSION['hostname']);
 	foreach ($repo_list as $array_value) {
-	$table_results.= '<tr>';
-	$table_results.=  '<td width="24px"><img src="img/library.png"></td>';
-    $table_results.=  '<td class="tg-k6pi"><a href="?repo=' . $array_value['id'] . '&repo_name='.$array_value['name'].'&dir=">' . $array_value['name'] . '</a></td>';
-    $table_results.=  '<td class="tg-k6pi">' . $array_value['desc'] . '</td>';
-	$table_results.= '<td class="tg-k6pi">' . time_elapsed_string($array_value['mtime']) . '</td>';
-	$table_results.=  '</tr>';	
+		$table_results.= '<tr>';
+		$table_results.=  '<td width="24px"><img src="img/library.png"></td>';
+		$table_results.=  '<td class="tg-k6pi"><a href="?repo=' . $array_value['id'] . '&repo_name='.$array_value['name'].'&dir=">' . $array_value['name'] . '</a></td>';
+		$table_results.=  '<td class="tg-k6pi">' . $array_value['desc'] . '</td>';
+		$table_results.= '<td class="tg-k6pi">' . time_elapsed_string($array_value['mtime']) . '</td>';
+		$table_results.=  '</tr>';	
 	} 
 	$table_results.=  '  </table>';
 	$logout_html="<hr><address>". $_SESSION['username']." logged on ".$_SESSION['hostname']." <a href='?logout=1'>logout</a></address>";
@@ -171,8 +171,8 @@ if (isset($_SESSION['token'])){
 }
 
 if (!isset($_SESSION['token'])){
-echo $header_html;
-echo $login_html;
-die($footer_html);
+	echo $header_html;
+	echo $login_html;
+	die($footer_html);
 }
 ?>
