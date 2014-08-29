@@ -99,11 +99,14 @@ if(isset($_GET['dir']) AND isset($_SESSION['token'])){
 	$repo_name = seafileApi('GET',$library_name,'',$_SESSION['token'],$_SESSION['hostname']);
 	$dirc = cut_last_occurence($_GET['dir'],"/");
 	$table_results.= '<tr>';
-	$table_results.= '<td></td>';
+	$table_results.= '<td class="tg-icon"></td>';
 	$table_results.= '<td><b>Name</b></td>';
 	$table_results.= '<td><b>Size</b></td>';
-	$table_results.= '<td><b>Last modified</b></td></tr>';
-	$table_results.= '<tr><td colspan="4"><hr></td></tr>';
+	$table_results.= '<td><b>Last modified</b></td>';
+	$table_results.= '</tr>';
+	$table_results.= '<tr>';
+	$table_results.= '<td colspan="4"><hr></td>';
+	$table_results.= '</tr>';
 
 	if ($_GET['dir']!=""){
 		$table_results.= '<tr><td class="tg-icon"><img src="img/folder.png" alt="Dir" height="24" width="24"></td>';
@@ -119,7 +122,8 @@ if(isset($_GET['dir']) AND isset($_SESSION['token'])){
 		if($array_value['type']=="dir"){
 			$table_results.= '<tr>';
 			$table_results.= '<td class="tg-icon"><img src="img/folder.png" alt="Dir" height="24" width="24"></td>';
-			$table_results.= '<td class="tg-k6pi"><a href="?dir=' .$_GET['dir'] . "/" . $array_value['name'] . '&repo=' . $_GET['repo'] . '">' . $array_value['name'] . '</a> </td></tr>';
+			$table_results.= '<td class="tg-k6pi"><a href="?dir=' .$_GET['dir'] . "/" . $array_value['name'] . '&repo=' . $_GET['repo'] . '">' . $array_value['name'] . '</a> </td>';
+			$table_results.= '</tr>';
 			}else{
 			$table_results.= '<td class="tg-icon"><img src="img/file.png" alt="File" height="24" width="24"></td>';
 			$table_results.= '<td class="tg-k6pi"><a href="?download=' .  $_GET['repo']  . '/file/?p=/' .$_GET['dir'] . '/&file=' . $array_value['name'] . '">' . $array_value['name'] . '</a> </td>';
@@ -152,13 +156,16 @@ if (isset($_GET['download']) AND isset($_SESSION['token'])){
 if (isset($_SESSION['token'])){
 	$table_results= '
 	<table class="tg">
-  ';
+	';
 	$table_results.= '<tr>';
 	$table_results.= '<td class="tg-icon"></td>';
 	$table_results.= '<td><b>Name</b></td>';
 	$table_results.= '<td><b>Desc</b></td>';
-	$table_results.= '<td><b>Last modified</b></td></tr>';
-	$table_results.= '<tr><td colspan="4"><hr></td></tr>';
+	$table_results.= '<td><b>Last modified</b></td>';
+	$table_results.= '</tr>';
+	$table_results.= '<tr>';
+	$table_results.= '<td colspan="4"><hr></td>';
+	$table_results.= '</tr>';
 
 	$repo_list = seafileApi('GET','/api2/repos/','',$_SESSION['token'],$_SESSION['hostname']);
 	foreach ($repo_list as $array_value) {
