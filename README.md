@@ -19,7 +19,7 @@ $pagination_footable=1; # 1 enable / 0 disable
 $pagination_footable_pages=30; # ignore if $pagination_footable=1
 Requerimientos
 --------------
- - php version 4.x 5.x (?)
+ - php version 4.x / 5.x (?)
  - php-curl
 
   [1]: https://github.com/bradvin/FooTable
