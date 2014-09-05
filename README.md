@@ -3,8 +3,8 @@ Seafito
 Seafito (sifito) es un Frontend para Seafile que utiliza la Web API. 
 Horrendamente escrito en PHP y posiblemente inseguro...bah, que se yo.
 
-[Bootstrap][1] para los estilos css.
-Utiliza [Footable][2] para mostrar los datos en tabla.
+Utiliza [Bootstrap][1] para los estilos css y
+[Footable][2] para mostrar los datos en tabla.
 Incluye paginación, filtros y ordenamiento de columnas.
 Los estilos css de Footable fueron modificados para usar los iconos [Glyphicons][3] que trae Bootstrap
 
