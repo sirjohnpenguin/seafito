@@ -20,10 +20,10 @@ $pagination_footable=1; # 1 enable / 0 disable
 **Columnas por pagina:**
 $pagination_footable_pages=30; # ignore if $pagination_footable=1
 
-** Desconexion por inactividad.
+**Desconexion por inactividad.**
 $max_idle_time=1440; #seconds
 
-** Branding (?) **
+**Branding (?)**
 
 $brand_name=''; # empty = current repo or section (For Menu)
 $brand_name='Seafito'; # Brand 
