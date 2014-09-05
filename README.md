@@ -15,12 +15,15 @@ Opciones
 Hay un par de variables para configurar en el archivo **index.php** (por ahora)
 
 **Habilitar paginación:**
+
 $pagination_footable=1; # 1 enable / 0 disable
 
 **Columnas por pagina:**
+
 $pagination_footable_pages=30; # ignore if $pagination_footable=1
 
 **Desconexion por inactividad.**
+
 $max_idle_time=1440; #seconds
 
 **Branding (?)**
