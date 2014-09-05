@@ -26,13 +26,13 @@ $max_idle_time=1440; #seconds
 ** Branding (?) **
 
 $brand_name=''; # empty = current repo or section (For Menu)
-#$brand_name='Seafito'; # Brand 
+$brand_name='Seafito'; # Brand 
 
 $brand_url=''; # empty = current repo or section 
-#$brand_url='index.php'; # Brand link
+$brand_url='index.php'; # Brand link
 
 $brand_title=''; # empty = current repo/dir or section (For page title)
-#$brand_title='Seafito'; # Seafito - repo/dir
+$brand_title='Seafito'; # Seafito - repo/dir
 
 Requerimientos
 --------------
