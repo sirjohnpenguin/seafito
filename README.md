@@ -10,6 +10,12 @@ Los estilos css de Footable fueron modificados para usar los iconos [Glyphicons]
 
 Solo esta implementada la descarga de archivos y la lista de archivos/directorios compartidos públicamente (shared file links).
 por ahora...
+
+Requerimientos
+--------------
+ - php 5.x 
+ - php5-curl
+ 
 Opciones
 --------
 Hay un par de variables para configurar en el archivo **index.php** (por ahora)
@@ -43,10 +49,6 @@ $brand_title=''; # empty = current repo/dir or section (For page title)
 
 $brand_title='Seafito'; # Seafito - repo/dir
 
-Requerimientos
---------------
- - php 5.x 
- - php5-curl
 
 
   [1]: http://getbootstrap.com/
